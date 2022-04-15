@@ -18,6 +18,7 @@ jobs:
    runs-on: ubuntu-18.04
    steps:
    
+      #领取周免游戏
       - name: Scaffold Claim
         run: |
           docker run --rm --pull always \
@@ -26,6 +27,25 @@ jobs:
           -e EPΙC_PASSWΟRD \
           -e PUSHER_TELEGRAM \
           -e PUSHER_SERVERCHAN \
-          -e PLAYER \
           ech0sec/awesome-epic:daddy python3 main.py claim
-           
+          
+      #领取 Epic Store 所有未在库的免费游戏
+      - name: Scaffold get
+        run: |
+          docker run --rm --pull always \
+          -v /database/cookies:/home/epic/database/cookies \
+          -e EPΙC_EMAΙL \
+          -e EPΙC_PASSWΟRD \
+          ech0sec/awesome-epic:daddy python3 main.py get
+          
+      #获取 Epic Store 所有未在库的免费DLC
+      - name: Scaffold get --dlc
+        run: |
+          docker run --rm --pull always \
+          -v /database/cookies:/home/epic/database/cookies \
+          -e EPΙC_EMAΙL \
+          -e EPΙC_PASSWΟRD \
+          ech0sec/awesome-epic:daddy python3 main.py get --dlc
+          
+          
+          
