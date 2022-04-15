@@ -1,0 +1,31 @@
+name: EPIC-YYDS
+on:
+ 
+  workflow_dispatch:
+  schedule:
+    - cron: 22 6 */3 * *
+ 
+  push:
+    branches: [main]
+ 
+jobs:
+  setup:
+   env:
+      EPΙC_EMAΙL: ${{ secrets.EPIC_EMAIL }}
+      EPΙC_PASSWΟRD: ${{ secrets.EPIC_PASSWORD }}
+      PUSHER_TELEGRAM: ${{ secrets.PUSHER_TELEGRAM }}
+      
+   runs-on: ubuntu-18.04
+   steps:
+   
+      - name: Scaffold Claim
+        run: |
+          docker run --rm --pull always \
+          -v /database/cookies:/home/epic/database/cookies \
+          -e EPΙC_EMAΙL \
+          -e EPΙC_PASSWΟRD \
+          -e PUSHER_TELEGRAM \
+          -e PUSHER_SERVERCHAN \
+          -e PLAYER \
+          ech0sec/awesome-epic:daddy python3 main.py claim
+           
