@@ -14,9 +14,8 @@ jobs:
       EPΙC_EMAΙL: ${{ secrets.EPIC_EMAIL }}
       EPΙC_PASSWΟRD: ${{ secrets.EPIC_PASSWORD }}
       PUSHER_TELEGRAM: ${{ secrets.PUSHER_TELEGRAM }}
-      PUSHER_SERVERCHAN: ${{ secrets.PUSHER_SERVERCHAN }}
       
-   runs-on: ubuntu-18.04
+   runs-on: ubuntu-latest
    steps:
    
       #领取周免游戏
@@ -27,7 +26,6 @@ jobs:
           -e EPΙC_EMAΙL \
           -e EPΙC_PASSWΟRD \
           -e PUSHER_TELEGRAM \
-          -e PUSHER_SERVERCHAN \
           ech0sec/awesome-epic:daddy python3 main.py claim
           
       #领取 Epic Store 所有未在库的免费游戏
