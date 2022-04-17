@@ -5,6 +5,9 @@ on:
   schedule:
     - cron: 22 6 */3 * *
     
+   #push:
+     #branches: [master]
+    
 jobs:
   setup:
    env:
